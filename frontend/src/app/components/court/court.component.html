@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #courtform="ngForm" (ngSubmit)="addCourt(courtform)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="courtService.selectedCourt._id">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="court" #court="ngModel" [(ngModel)]="courtService.selectedCourt.court" placeholder="Enter Your court">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="state" #state="ngModel" [(ngModel)]="courtService.selectedCourt.state" placeholder="Enter court state">
+                            </div>                                                                                
+                            <div class="car-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" (click)="resetForm(courtform)">Clean</button>
+                                    <button class="btn right">Save</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>court</th>
+                    <th>state</th>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let court of courtService.courts">
+                       <td>{{court.court}}</td>
+                       <td>{{court.state}}</td>
+                       <td>
+                           <a (click)="editCourt(court)">
+                               <i class="material-icons">edit</i>
+                           </a>
+                           <a (click)="deleteCourt(court._id)">
+                               <i class="material-icons">delete</i>
+                           </a>
+                        </td>
+                   </tr> 
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>

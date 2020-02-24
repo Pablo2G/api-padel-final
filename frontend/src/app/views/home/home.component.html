@@ -1,0 +1,19 @@
+<h1>Bienvenido a tu aplicación de reservas</h1>
+<div>
+    <div class="col s7">
+        <table>
+            <thead>
+                <th>user</th>
+                <th>court</th>
+                <th>date</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reservation of reservas">
+                    <td *ngIf='identity.name === (reservation.user)'>{{reservation.user}}</td>
+                    <td *ngIf='identity.name === (reservation.user)'>{{reservation.court}}</td>
+                    <td *ngIf='identity.name === (reservation.user)'>{{reservation.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

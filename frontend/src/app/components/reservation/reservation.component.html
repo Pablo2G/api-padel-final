@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #reservationform="ngForm" (ngSubmit)="addReservation(reservationform)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="reservationService.selectedReservation._id">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="user" #user="ngModel" [(ngModel)]="reservationService.selectedReservation.user" placeholder="Enter Your user">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="court" #court="ngModel" [(ngModel)]="reservationService.selectedReservation.court" placeholder="Enter Your court">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="date" #date="ngModel" [(ngModel)]="reservationService.selectedReservation.date" placeholder="Enter your date">
+                            </div>                                                                                
+                            <div class="car-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" (click)="resetForm(reservationform)">Clean</button>
+                                    <button class="btn right">Save</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>user</th>
+                    <th>court</th>
+                    <th>date</th>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let reservation of reservationService.reservations">
+                       <td>{{reservation.user}}</td>
+                       <td>{{reservation.court}}</td>
+                       <td>{{reservation.date}}</td>
+                       <td>
+                           <a (click)="editReservation(reservation)">
+                               <i class="material-icons">edit</i>
+                           </a>
+                           <a (click)="deleteReservation(reservation._id)">
+                               <i class="material-icons">delete</i>
+                           </a>
+                        </td>
+                   </tr> 
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
